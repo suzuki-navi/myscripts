@@ -1,0 +1,15 @@
+#!/bin/bash
+
+MYSCRIPTS_PATH=$(cd $(dirname $0)/..; pwd)
+bash $MYSCRIPTS_PATH/etc/download-anytoold.sh
+ANYTOOLD_PATH=$(cd $(dirname $0)/../anytoold; pwd)
+
+name=$(basename $0)
+
+export ANYTOOLD_EXTDIR=$MYSCRIPTS_PATH/lib/$name
+export PYTHON_VERSION=${PYTHON_VERSION:-"*"}
+
+export PORT=$1
+
+bash $ANYTOOLD_PATH/docker-run.sh python /usr/local/localserver.py "$@"
+
