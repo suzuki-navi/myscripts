@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+# カレントディレクトリまたは指定のディレクトリの全ファイルの内容を反映したハッシュ地を計算する
+# ファイルの内容だけでなくパーミッションも考慮するが、タイムスタンプは考慮しない
+
+set -Ceu
+
+if [ "$#" == 0 ]; then
+    target_dir="."
+else
+    target_dir=$1
+fi
+
+cd $target_dir
+
+find . | LC_ALL=C sort | while read path; do
+    echo $path
+    if [ -f "$path" ]; then
+        stat --format=%a "$path"
+        sed "$path" -e 's/^/ /g'
+    fi
+done | sha256sum | cut -b-64
+
