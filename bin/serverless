@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MYSCRIPTS_PATH=$(cd $(dirname $0)/..; pwd)
-bash $MYSCRIPTS_PATH/etc/download-anytoold.sh
+bash $MYSCRIPTS_PATH/lib/download-anytoold.sh
 ANYTOOLD_PATH=$(cd $(dirname $0)/../anytoold; pwd)
 
 name=$(basename $0)
