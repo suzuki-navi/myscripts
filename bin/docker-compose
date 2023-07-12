@@ -7,7 +7,7 @@ ANYTOOLD_PATH=$(cd $(dirname $0)/../anytoold; pwd)
 name1="docker-compose"
 name2="docker compose"
 
-export ANYTOOLD_EXTDIR=$MYSCRIPTS_PATH/lib/$name1
+export ANYTOOLD_EXTDIR=$MYSCRIPTS_PATH/ext/$name1
 
 bash $ANYTOOLD_PATH/docker-run.sh $name2 "$@"
 
