@@ -1,4 +1,6 @@
 
+RUN apt install -y mandoc
+
 WORKDIR /usr/local
 
 RUN curl -SsfLk "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscli-exe-linux-x86_64.zip
