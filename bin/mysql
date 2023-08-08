@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MYSCRIPTS_PATH=$(cd $(dirname $0)/..; pwd)
+bash $MYSCRIPTS_PATH/lib/download-anytoold.sh
+ANYTOOLD_PATH=$(cd $(dirname $0)/../anytoold; pwd)
+
+name=$(basename $0)
+
+export ANYTOOLD_EXTDIR=$MYSCRIPTS_PATH/ext/$name
+
+bash $ANYTOOLD_PATH/docker-run.sh $name "$@"
+
